@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{AFDFC45D-644D-C9CF-1D30-1F4733C9E8E6}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Utility/SmoothFollow.cs">
+    <Files>
+      <File FileName="Assets/02.Scripts/MoveCtrl.cs" Line="41" Column="20" />
+      <File FileName="Assets/02.Scripts/NetworkMgr.cs" Line="47" Column="29" />
+      <File FileName="Assets/02.Scripts/PlayerCtrl.cs" Line="18" Column="45" />
+      <File FileName="Assets/Standard Assets/Utility/SmoothFollow.cs" Line="10" Column="27" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ShooterNet PreferredExecutionTarget="Unity.Editor" />
+  <MultiItemStartupConfigurations />
+</Properties>
