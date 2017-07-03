@@ -26,9 +26,9 @@ Platform assembly: D:\Work\Unity_SpaceShootNetExample\test_Data\Managed\System.d
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 0.981031 ms
+UnloadTime: 1.100618 ms
 Setting up 4 worker threads for Enlighten.
-  Thread -> id: 2f68 -> priority: 1 
-  Thread -> id: 6060 -> priority: 1 
-  Thread -> id: 6e08 -> priority: 1 
-  Thread -> id: 6fd8 -> priority: 1 
+  Thread -> id: 32b8 -> priority: 1 
+  Thread -> id: 5a0c -> priority: 1 
+  Thread -> id: 31c4 -> priority: 1 
+  Thread -> id: 4cbc -> priority: 1 

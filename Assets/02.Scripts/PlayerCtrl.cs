@@ -32,6 +32,10 @@ public class PlayerCtrl : MonoBehaviour {
     public GameObject bullet;
     public Transform firePos;
 
+    private bool isDie = false;
+    private int hp = 100;
+    private float respawnTime = 3.0f;
+
     private void Awake()
     {
         tr = GetComponent<Transform>();
@@ -50,6 +54,9 @@ public class PlayerCtrl : MonoBehaviour {
         if(_networkView.isMine){
             if(Input.GetMouseButtonDown(0))
             {
+                // 사망했을때 발사 로직 및 이동 로직을 수행하지 않고 빠져나감
+                if (isDie) return;
+
                 // 자신은 로컬 함수를 호출해 발사
                 Fire();
 
@@ -136,6 +143,55 @@ public class PlayerCtrl : MonoBehaviour {
             currPos = revPos;
             currRot = revRot;
             animState = (AnimState)_animState;
+        }
+    }
+
+    private void OnTriggerEnter(Collider coll)
+    {
+       if(coll.gameObject.tag == "BULLET")
+        {
+            Destroy(coll.gameObject);
+
+            hp -= 20;
+
+            if (hp <= 0)
+            {
+                StartCoroutine(this.RespawnPlayer(respawnTime));
+            }
+        }
+    }
+
+    IEnumerator RespawnPlayer(float waitTime)
+    {
+        isDie = true;
+
+        // 플레이어의 Mesh Renderer를 비활성화하는 코루틴 함수 호출
+        StartCoroutine(this.PlayerVisible(false, 0.0f));
+
+        yield return new WaitForSeconds(waitTime);
+
+        tr.position = new Vector3(Random.Range(-20.0f, 20.0f), 0.0f, Random.Range(-20.0f, 20.0f));
+
+        hp = 100;
+
+        isDie = false;
+
+        StartCoroutine(this.PlayerVisible(true, 0.5f));
+
+    }
+
+    IEnumerator PlayerVisible(bool visibled, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+
+        GetComponentInChildren<SkinnedMeshRenderer>().enabled = visibled;
+
+        GetComponentInChildren<MeshRenderer>().enabled = visibled;
+
+        if(_networkView.isMine)
+        {
+            GetComponent<MoveCtrl>().enabled = visibled;
+            controller.enabled = visibled;
         }
     }
 }

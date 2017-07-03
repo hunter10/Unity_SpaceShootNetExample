@@ -59,4 +59,11 @@ public class NetworkMgr : MonoBehaviour {
         Vector3 pos = new Vector3(Random.Range(-20.0f, 20.0f), 0.0f, Random.Range(-20.0f, 20.0f));
         Network.Instantiate(player, pos, Quaternion.identity, 0);
     }
+
+    private void OnPlayerDisconnected(NetworkPlayer netPlayer)
+    {
+        Network.RemoveRPCs(netPlayer);
+
+        Network.DestroyPlayerObjects(netPlayer);
+    }
 }
